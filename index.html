@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>武黎芸 · 个人主页 | 产品经理</title>
+<style>
+  :root{
+    --accent:#F0592A;
+    --accent-deep:#D94A1F;
+    --black:#141414;
+    --card-dark:#1E1E1E;
+    --ink:#1A1A1A;
+    --body:#5A5A5A;
+    --muted:#8A8A8A;
+    --hairline:#ECEAE7;
+    --gray:#F4F3F1;
+    --white:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+    color:var(--ink);background:var(--white);line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  .container{max-width:1120px;margin:0 auto;padding:0 32px;}
+
+  /* ============ 导航 ============ */
+  nav{
+    position:sticky;top:0;z-index:100;background:var(--black);
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    padding:0 40px;height:64px;
+  }
+  .nav-left{display:flex;gap:28px;}
+  .nav-right{display:flex;gap:28px;justify-content:flex-end;}
+  .nav-left a,.nav-right a{
+    color:#B9B9B9;text-decoration:none;font-size:13.5px;font-weight:500;
+    letter-spacing:1px;transition:color .25s;align-self:center;
+  }
+  .nav-left a:hover,.nav-right a:hover{color:#fff;}
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .logo-mark{
+    width:36px;height:36px;border-radius:50%;background:var(--accent);
+    color:#fff;font-weight:700;font-size:17px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .logo-text b{color:#fff;font-size:15px;font-weight:600;letter-spacing:2px;display:block;line-height:1.3;}
+  .logo-text span{color:#9A9A9A;font-size:10.5px;letter-spacing:2.5px;}
+
+  /* ============ Hero ============ */
+  .hero{padding:96px 0 80px;}
+  .hello-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(240,89,42,.08);color:var(--accent);
+    font-size:13px;font-weight:600;letter-spacing:2px;
+    padding:8px 20px;border-radius:999px;margin-bottom:22px;
+  }
+  .hello-pill i{font-style:normal;width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block;}
+  .hero h1{
+    font-size:clamp(34px,5vw,54px);font-weight:700;letter-spacing:2px;line-height:1.25;
+  }
+  .hero h1 .accent{color:var(--accent);}
+  .hero .sub{color:var(--body);font-size:16.5px;margin-top:14px;}
+
+  .hero-grid{
+    display:grid;grid-template-columns:1fr auto 1fr;gap:48px;
+    align-items:center;margin-top:72px;
+  }
+  .hero-side{display:flex;flex-direction:column;gap:22px;}
+  .hero-side.right{align-items:flex-end;text-align:right;}
+  .quote-card{
+    background:var(--gray);border-radius:16px;padding:22px 24px;max-width:300px;
+  }
+  .quote-card p{font-size:14.5px;color:var(--body);}
+  .quote-card b{color:var(--ink);font-weight:600;}
+  .side-stat{max-width:300px;}
+  .side-stat .num{font-size:34px;font-weight:700;color:var(--ink);line-height:1.2;}
+  .side-stat .num em{font-style:normal;color:var(--accent);font-size:22px;}
+  .side-stat .lab{font-size:13px;color:var(--muted);letter-spacing:1px;margin-top:2px;}
+  .stars{color:var(--accent);letter-spacing:4px;font-size:15px;}
+  .side-note{font-size:14px;color:var(--body);max-width:280px;line-height:1.8;}
+  .side-note b{color:var(--ink);font-weight:600;}
+
+  .photo-zone{position:relative;width:360px;justify-self:center;padding-top:34px;}
+  .photo-circle{
+    width:330px;height:330px;border-radius:50%;background:var(--accent);
+    position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  }
+  .photo-circle::after{
+    content:"";position:absolute;right:-14px;top:52px;
+    width:22px;height:22px;border-radius:50%;background:var(--black);
+  }
+  .photo-frame{
+    position:relative;width:236px;margin:0 auto;
+    border-radius:18px;overflow:hidden;background:#fff;
+    border:8px solid #fff;box-shadow:0 24px 48px rgba(20,20,20,.16);
+  }
+  .photo-frame img{display:block;width:100%;height:300px;object-fit:cover;object-position:top center;}
+  .photo-cta{
+    position:relative;margin:-26px auto 0;width:max-content;
+    background:#fff;border-radius:999px;padding:8px;
+    box-shadow:0 14px 34px rgba(20,20,20,.14);
+    display:flex;gap:8px;
+  }
+  .photo-cta a{
+    text-decoration:none;font-size:13.5px;font-weight:600;letter-spacing:1px;
+    padding:10px 22px;border-radius:999px;transition:all .25s;display:inline-block;
+  }
+  .btn-solid{background:var(--accent);color:#fff;}
+  .btn-solid:hover{background:var(--accent-deep);transform:translateY(-2px);}
+  .btn-line{color:var(--ink);border:1.5px solid var(--ink);}
+  .btn-line:hover{background:var(--black);color:#fff;transform:translateY(-2px);}
+
+  /* ============ 数据条 ============ */
+  .stats{
+    border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
+    padding:44px 0;
+  }
+  .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);}
+  .stat{text-align:center;padding:0 12px;border-left:1px solid var(--hairline);}
+  .stat:first-child{border-left:none;}
+  .stat b{font-size:32px;font-weight:700;color:var(--ink);letter-spacing:0;}
+  .stat b em{font-style:normal;color:var(--accent);font-size:20px;vertical-align:3px;margin-right:1px;}
+  .stat span{display:block;font-size:12.5px;color:var(--muted);letter-spacing:1.5px;margin-top:4px;}
+
+  /* ============ 通用章节头 ============ */
+  section{padding:96px 0;}
+  .eyebrow{
+    font-size:12px;letter-spacing:5px;font-weight:600;color:var(--muted);
+    text-transform:uppercase;margin-bottom:14px;
+  }
+  .eyebrow.orange{color:var(--accent);}
+  .sec-title{font-size:clamp(28px,3.6vw,40px);font-weight:700;letter-spacing:2px;line-height:1.3;}
+  .sec-title .accent{color:var(--accent);}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:56px;flex-wrap:wrap;}
+  .sec-desc{max-width:380px;color:var(--body);font-size:14.5px;padding-bottom:6px;}
+
+  /* ============ 教育经历 ============ */
+  .edu{background:var(--gray);}
+  .edu-card{
+    background:#fff;border-radius:20px;padding:40px 48px;
+    display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:center;
+    border:1px solid var(--hairline);
+  }
+  .edu-main h3{font-size:22px;font-weight:700;letter-spacing:1px;}
+  .edu-main h3 span{color:var(--body);font-weight:500;font-size:16px;margin-left:14px;}
+  .edu-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+  .edu-label{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--muted);align-self:center;margin-right:2px;}
+  .pill{
+    font-size:12.5px;font-weight:600;letter-spacing:.5px;
+    padding:6px 16px;border-radius:999px;background:var(--gray);color:var(--body);
+  }
+  .pill.hot{background:rgba(240,89,42,.09);color:var(--accent);}
+  .edu-date{font-size:14px;color:var(--muted);font-weight:600;letter-spacing:1px;white-space:nowrap;}
+
+  /* ============ 核心能力（黑底） ============ */
+  .dark{background:var(--black);}
+  .dark .sec-title{color:#fff;}
+  .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .cap-card{
+    background:var(--card-dark);border:1px solid #2A2A2A;border-radius:20px;
+    padding:36px 32px;transition:transform .3s;
+  }
+  .cap-card:hover{transform:translateY(-6px);}
+  .cap-card.hot{background:var(--accent);border-color:var(--accent);}
+  .cap-card h3{color:#fff;font-size:19px;font-weight:600;letter-spacing:1px;margin-bottom:12px;}
+  .cap-card p{color:#9C9C9C;font-size:14px;line-height:1.9;}
+  .cap-card.hot p{color:#FFE4D8;}
+  .cap-card .go{
+    margin-top:26px;width:44px;height:44px;border-radius:50%;
+    border:1.5px solid #4A4A4A;color:#fff;font-size:18px;
+    display:flex;align-items:center;justify-content:center;transition:all .3s;text-decoration:none;
+  }
+  .cap-card .go:hover{background:#fff;color:var(--black);border-color:#fff;transform:translateX(4px);}
+  .cap-card.hot .go{border-color:rgba(255,255,255,.55);}
+  .cap-card.hot .go:hover{background:#fff;color:var(--accent);border-color:#fff;}
+
+  /* ============ 实习经历：中轴时间线 ============ */
+  .timeline{position:relative;max-width:880px;margin:0 auto;}
+  .timeline::before{
+    content:"";position:absolute;left:50%;top:6px;bottom:6px;width:2px;
+    background:var(--hairline);transform:translateX(-50%);
+  }
+  .tl-row{position:relative;width:50%;padding:0 44px 56px 0;}
+  .tl-row:nth-child(even){margin-left:50%;padding:0 0 56px 44px;}
+  .tl-row::before{
+    content:"";position:absolute;top:8px;right:-7px;width:12px;height:12px;border-radius:50%;
+    background:var(--accent);box-shadow:0 0 0 5px #fff,0 0 0 6px var(--hairline);
+  }
+  .tl-row:nth-child(even)::before{right:auto;left:-7px;}
+  .tl-row:last-child{padding-bottom:6px;}
+  .tl-date{font-size:12.5px;font-weight:700;letter-spacing:2px;color:var(--accent);margin-bottom:8px;}
+  .tl-row h3{font-size:19px;font-weight:700;letter-spacing:.5px;}
+  .tl-row h3 span{font-size:13.5px;color:var(--muted);font-weight:500;margin-left:10px;}
+  .tl-row ul{list-style:none;margin-top:14px;}
+  .tl-row li{
+    position:relative;padding-left:18px;font-size:14px;color:var(--body);
+    margin-bottom:8px;line-height:1.8;
+  }
+  .tl-row li::before{
+    content:"";position:absolute;left:0;top:11px;width:7px;height:2px;background:var(--accent);
+  }
+  .tl-row li b{color:var(--ink);font-weight:600;}
+  .tl-row li strong{color:var(--accent);font-weight:700;}
+
+  /* ============ 学生工作 ============ */
+  .campus{background:var(--gray);}
+  .campus-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .campus-card{
+    background:#fff;border:1px solid var(--hairline);border-radius:20px;
+    padding:36px;position:relative;overflow:hidden;transition:transform .3s;
+  }
+  .campus-card:hover{transform:translateY(-6px);}
+  .campus-card::before{
+    content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--accent);
+  }
+  .campus-tag{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:2px;
+    color:var(--accent);margin-bottom:12px;
+  }
+  .campus-card h3{font-size:20px;font-weight:700;letter-spacing:.5px;margin-bottom:4px;}
+  .campus-card h3 span{font-size:13.5px;color:var(--muted);font-weight:500;margin-left:10px;}
+  .campus-card ul{list-style:none;margin-top:14px;}
+  .campus-card li{
+    position:relative;padding-left:18px;font-size:14px;color:var(--body);
+    margin-bottom:8px;line-height:1.8;
+  }
+  .campus-card li::before{
+    content:"";position:absolute;left:0;top:11px;width:7px;height:2px;background:var(--accent);
+  }
+  .campus-card li b{color:var(--ink);font-weight:600;}
+  .campus-card li strong{color:var(--accent);font-weight:700;}
+
+  /* ============ 技能 ============ */
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .skill-col{padding:0 36px;border-left:1px solid var(--hairline);}
+  .skill-col:first-child{border-left:none;padding-left:0;}
+  .skill-col:last-child{padding-right:0;}
+  .skill-col h3{
+    font-size:13px;font-weight:700;letter-spacing:4px;color:var(--muted);
+    text-transform:uppercase;margin-bottom:20px;
+  }
+  .skill-col h3 b{color:var(--accent);margin-right:6px;}
+  .skill-item{padding:12px 0;border-bottom:1px solid var(--hairline);}
+  .skill-item b{display:block;font-size:15px;font-weight:600;color:var(--ink);}
+  .skill-item span{font-size:13px;color:var(--muted);}
+
+  /* ============ 页脚 / 联系 ============ */
+  footer{background:var(--black);padding:96px 0 0;}
+  .foot-inner{text-align:center;}
+  footer h2{color:#fff;font-size:clamp(28px,3.6vw,42px);font-weight:700;letter-spacing:2px;}
+  footer h2 .accent{color:var(--accent);}
+  footer .foot-sub{color:#9C9C9C;font-size:15px;margin-top:16px;}
+  .foot-btns{display:flex;gap:16px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
+  .foot-btns a{
+    text-decoration:none;font-size:14.5px;font-weight:600;letter-spacing:1px;
+    padding:14px 34px;border-radius:999px;transition:all .25s;display:inline-block;
+  }
+  .fb-solid{background:var(--accent);color:#fff;}
+  .fb-solid:hover{background:var(--accent-deep);transform:translateY(-3px);}
+  .fb-line{border:1.5px solid #4A4A4A;color:#fff;}
+  .fb-line:hover{border-color:#fff;transform:translateY(-3px);}
+  .foot-mail{
+    margin-top:22px;color:#9C9C9C;font-size:14px;letter-spacing:1px;
+  }
+  .foot-mail a{
+    color:#fff;text-decoration:none;font-weight:600;
+    border-bottom:1px solid #4A4A4A;transition:all .25s;
+  }
+  .foot-mail a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+  .foot-meta{
+    margin-top:64px;padding:26px 0;border-top:1px solid #2A2A2A;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    color:#6E6E6E;font-size:12.5px;letter-spacing:1px;
+  }
+
+  /* ============ 入场动画 ============ */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.on{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ============ 响应式 ============ */
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
+    .hero-side.right{align-items:flex-start;text-align:left;}
+    .photo-zone{order:-1;}
+    .cap-grid{grid-template-columns:1fr;}
+    .campus-grid{grid-template-columns:1fr;}
+    .skill-grid{grid-template-columns:1fr;gap:36px;}
+    .skill-col{border-left:none;padding:0;}
+    .timeline::before{left:6px;}
+    .tl-row,.tl-row:nth-child(even){width:100%;margin-left:0;padding:0 0 48px 36px;}
+    .tl-row::before,.tl-row:nth-child(even)::before{left:0;right:auto;}
+  }
+  @media (max-width:720px){
+    nav{grid-template-columns:1fr;justify-items:center;height:auto;padding:12px 20px;}
+    .nav-left,.nav-right{display:none;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);gap:28px 0;}
+    .stat:nth-child(odd){border-left:none;}
+    .stat:nth-child(3),.stat:nth-child(4),.stat:nth-child(5){border-top:1px solid var(--hairline);padding-top:24px;}
+    section{padding:72px 0;}
+    .edu-card{padding:30px 26px;}
+    .photo-zone{width:100%;}
+    .photo-circle{width:280px;height:280px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- 导航 -->
+<nav>
+  <div class="nav-left">
+    <a href="#stats">亮点</a>
+    <a href="#education">教育</a>
+    <a href="#intern">实习</a>
+  </div>
+  <a class="logo" href="#top">
+    <span class="logo-mark">武</span>
+    <span class="logo-text"><b>武黎芸</b><span>WU LIYUN</span></span>
+  </a>
+  <div class="nav-right">
+    <a href="#campus">学生工作</a>
+    <a href="#skills">技能</a>
+    <a href="#contact">联系</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <div class="container" style="text-align:center;">
+    <div class="hello-pill reveal"><i></i>HELLO，很高兴认识你</div>
+    <h1 class="reveal">你好，我是<span class="accent">武黎芸</span></h1>
+    <p class="sub reveal">清华大学 2028 届本科生 &nbsp;·&nbsp; 求职意向：产品经理 &nbsp;·&nbsp; 每周 4 天到岗</p>
+
+    <div class="hero-grid">
+      <div class="hero-side reveal">
+        <div class="quote-card">
+          <p>「用<b>AI</b>与<b>内容</b>，<br>让每一次传播都有效。」</p>
+        </div>
+        <div class="side-stat">
+          <div class="num">60000<em>+</em></div>
+          <div class="lab">单次活动系列推文阅读量</div>
+        </div>
+      </div>
+
+      <div class="photo-zone reveal">
+        <div class="photo-circle"></div>
+        <div class="photo-frame"><img src="photo.jpg" alt="武黎芸证件照"></div>
+        <div class="photo-cta">
+          <a class="btn-solid" href="#intern">查看经历</a>
+          <a class="btn-line" href="#contact">联系我</a>
+        </div>
+      </div>
+
+      <div class="hero-side right reveal">
+        <div class="stars">★★★★★</div>
+        <p class="side-note"><b>GPA 3.89 / 4.00</b>，包揽国家励志奖学金等<b>四项奖学金</b>。</p>
+        <p class="side-note"><b>2025 年北京市大学生人文知识竞赛</b>个人一等奖，内容功底扎实。</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 数据亮点 -->
+<div class="stats" id="stats">
+  <div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat"><b>23<em>%</em></b><span>春节档峰值日 DAU 增长</span></div>
+      <div class="stat"><b>12.3<em>%</em></b><span>新客首单转化提升</span></div>
+      <div class="stat"><b>13<em>%</em></b><span>志愿者季度留存提升</span></div>
+      <div class="stat"><b>60000<em>+</em></b><span>系列推文阅读量</span></div>
+      <div class="stat"><b>200<em>+</em></b><span>合作管理社员</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 教育经历 -->
+<section class="edu" id="education">
+  <div class="container">
+    <div class="eyebrow reveal">EDUCATION</div>
+    <h2 class="sec-title reveal">教育<span class="accent">经历</span></h2>
+    <div class="edu-card reveal" style="margin-top:48px;">
+      <div class="edu-main">
+        <h3>清华大学 <span>马克思主义理论（主修）· 新闻传播（辅修）· 本科</span></h3>
+        <div class="edu-badges">
+          <span class="pill hot">GPA 3.89 / 4.00</span>
+          <span class="pill">国家励志奖学金</span>
+          <span class="pill">清华大学志愿公益优秀奖学金</span>
+          <span class="pill">唐仲英德育奖学金</span>
+          <span class="pill">日新书院砥柱奖学金</span>
+        </div>
+        <div class="edu-badges" style="margin-top:10px;">
+          <span class="edu-label">相关课程</span>
+          <span class="pill">基于 Python 的数据结构与算法 4.0</span>
+          <span class="pill">媒介编程 4.0</span>
+          <span class="pill">传播学原理 4.0</span>
+          <span class="pill">概率论与数理统计 4.0</span>
+        </div>
+      </div>
+      <div class="edu-date">2024.08 — 2028.06</div>
+    </div>
+  </div>
+</section>
+
+<!-- 核心能力 -->
+<section class="dark">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow orange reveal">WHAT I DO</div>
+        <h2 class="sec-title reveal">我的<span class="accent">核心能力</span></h2>
+      </div>
+      <p class="sec-desc reveal" style="color:#9C9C9C;">从电影营销实战到 AIGC 产品搭建，从内容策划到数据验证。</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <h3>营销策划与落地</h3>
+        <p>深度参与猫眼娱乐春节档影片端内全周期运营，云包场项目联动 5 家品牌异业合作，新客首单转化率提升 12.3%。</p>
+        <a class="go" href="#intern">→</a>
+      </div>
+      <div class="cap-card hot reveal">
+        <h3>新媒体矩阵运营</h3>
+        <p>打造「物料切片 + 情绪营销 + UGC 二创」三层内容体系，策划话题热点联动 20+ 垂类 KOL，系列推文阅读量 60000+。</p>
+        <a class="go" href="#intern">→</a>
+      </div>
+      <div class="cap-card reveal">
+        <h3>AI 工具与数据分析</h3>
+        <p>熟练使用大模型与 Agent 协同工作，掌握 Prompt Engineering；熟悉 SQL、SPSS，曾搭建人岗匹配就业推荐 Agent。</p>
+        <a class="go" href="#skills">→</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 实习经历 -->
+<section id="intern">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:64px;">
+      <div class="eyebrow reveal">INTERNSHIP</div>
+      <h2 class="sec-title reveal">实习<span class="accent">经历</span></h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-row reveal">
+        <div class="tl-date">2025.12 — 2026.03</div>
+        <h3>猫眼娱乐<span>电影营销</span></h3>
+        <ul>
+          <li><b>电影端侧推广：</b>深度参与春节档影片端内全周期运营，联动 AI 宣发中台输出个性化落地页素材，设计美团、大众等 App 开屏 / 角标、banner 投放策略，峰值日 APP DAU 环比增长 <strong>23%</strong></li>
+          <li><b>促销活动策划：</b>负责春节云包场营销项目，联动 <strong>5 家品牌</strong>异业合作，优化阶梯式票补券包与多人观影满减机制，配合下沉市场渠道下沉，新客首单转化率提升 <strong>12.3%</strong></li>
+          <li><b>新媒体矩阵运营：</b>打造「物料切片 + 情绪营销 + UGC 二创共创」三层内容体系，策划 <strong>#飞驰人生3后遗症</strong> 等话题热点，联动 <strong>20+ 垂类 KOL</strong> 种草铺量</li>
+        </ul>
+      </div>
+      <div class="tl-row reveal">
+        <div class="tl-date">2025.02 — 2025.06</div>
+        <h3>华清自强科技有限公司<span>AIGC 产品经理 · AI 初创公司</span></h3>
+        <ul>
+          <li><b>Agent 产品搭建：</b>深度调研市场需求与用户画像，搭建「岗对 —— 基于大模型的大学生人岗匹配就业推荐系统」，完成多轮对话优化与迭代，入围第 12 届清华大学<strong>「校长杯」创新挑战赛</strong>初赛</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 学生工作 -->
+<section class="campus" id="campus">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:64px;">
+      <div class="eyebrow reveal">CAMPUS LEADERSHIP</div>
+      <h2 class="sec-title reveal">学生<span class="accent">工作</span></h2>
+    </div>
+    <div class="campus-grid">
+      <div class="campus-card reveal">
+        <span class="campus-tag">2026.02 — 至今</span>
+        <h3>清华大学唐仲英爱心社<span>实践部部长</span></h3>
+        <ul>
+          <li><b>统筹协调与活动组织：</b>合作管理 <strong>200+ 社员</strong>，半年内协调落地 <strong>30 余项活动</strong>；搭建实践全生命周期管理体系，任期内志愿者季度留存率提升 <strong>13%</strong></li>
+          <li><b>内容推广与品牌曝光：</b>主导实践风采展示会策划和执行，独立设计视觉物料，负责活动全流程链条，有效提升组织曝光与人员吸引度，提高成果转化率</li>
+        </ul>
+      </div>
+      <div class="campus-card reveal">
+        <span class="campus-tag">2026.02 — 至今</span>
+        <h3>清华大学校团委<span>志愿中心组长</span></h3>
+        <ul>
+          <li><b>项目 SOP 体系搭建：</b>分板块整合校内志愿公益项目，统一「立项评审 — 招募筛选 — 岗前培训 — 落地执行 — 复盘迭代」环节流程，制定标准化执行手册，协同建立<b>紫荆志愿者服务平台</b>，项目落地完成率提升</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 技能 -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow reveal">SKILLS</div>
+        <h2 class="sec-title reveal">技能<span class="accent">特长</span></h2>
+      </div>
+      <p class="sec-desc reveal">AI 协同、办公设计、视频与语言，支撑产品经理工作的完整工具箱。</p>
+    </div>
+    <div class="skill-grid reveal">
+      <div class="skill-col">
+        <h3><b>01</b>AI 与数据</h3>
+        <div class="skill-item"><b>AI 大模型 · Agent 协同</b><span>熟练使用，掌握 Prompt Engineering，了解 Vibe Coding</span></div>
+        <div class="skill-item"><b>SQL · SPSS</b><span>理解数据分析，支持业务验证</span></div>
+        <div class="skill-item"><b>AIGC 产品实践</b><span>曾独立搭建人岗匹配推荐 Agent</span></div>
+      </div>
+      <div class="skill-col">
+        <h3><b>02</b>办公与设计</h3>
+        <div class="skill-item"><b>PPT（精通）</b><span>母版制作 · 可视化分析 · 动效设计</span></div>
+        <div class="skill-item"><b>Excel</b><span>数据透视表 · VLOOKUP · 数据清洗</span></div>
+        <div class="skill-item"><b>Xiumi · Canva</b><span>擅长推文排版，曾创作出爆款</span></div>
+      </div>
+      <div class="skill-col">
+        <h3><b>03</b>视频与语言</h3>
+        <div class="skill-item"><b>剪映（精通）· PR · AE</b><span>擅长创意视频制作</span></div>
+        <div class="skill-item"><b>英语 CET-6（524）</b><span>可作为工作语言，英文日常交流</span></div>
+        <div class="skill-item"><b>普通话二级甲等</b><span>89.9 分</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 联系 -->
+<footer id="contact">
+  <div class="container">
+    <div class="foot-inner">
+      <div class="eyebrow orange reveal" style="letter-spacing:6px;">GET IN TOUCH</div>
+      <h2 class="reveal">让我们一起<span class="accent">工作</span></h2>
+      <p class="foot-sub reveal">如果你正在寻找一位产品经理（每周 4 天到岗），期待与你联系。</p>
+      <div class="foot-btns reveal">
+        <a class="fb-solid" href="mailto:wu-ly24@mails.tsinghua.edu.cn">发邮件给我</a>
+        <a class="fb-line" href="tel:18372557622">18372557622</a>
+      </div>
+      <p class="foot-mail reveal">邮箱：<a href="mailto:wu-ly24@mails.tsinghua.edu.cn">wu-ly24@mails.tsinghua.edu.cn</a></p>
+    </div>
+    <div class="foot-meta">
+      <span>© 2026 武黎芸 · 清华大学</span>
+      <span>微信 wwww71769706 &nbsp;·&nbsp; 北京市海淀区清华园街道</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: .1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
